@@ -1,5 +1,5 @@
 /**
- * @param preferences - target student focus
+ * @param focus - target student focus
  * @param knowsProgramming - if student can do programming and know basics
  * @param config - private student ability to perform for different focus modes
  * @returns number of weeks needed for finish education
@@ -9,6 +9,16 @@ module.exports = function getTimeForEducation(
     knowsProgramming = true,
     config = {family: 4}
     ) {
-      return 0;
+
+      let weeks = 0;
+
+      if (knowsProgramming) {
+        weeks = Math.ceil(800/config[focus]);
+      }
+      else {
+        weeks = Math.ceil(1300/config[focus]); //1300 = 800 + 500 - time foe student without programming skills
+      }
+
+      return weeks;
   };
   
